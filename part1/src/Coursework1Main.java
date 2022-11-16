@@ -198,11 +198,21 @@ public class Coursework1Main {
     }
 
     /**
-     * @return a Smartshelf constructed with ITEM1, null, ITEM2 in the argument
+     * @return a Smartshelf constructed with null, ITEM2, ITEM1 in the argument
      *  array
      */
     private static Smartshelf makeConstructorTwoItemAndNullSmartshelf() {
         Item[] items = { ITEM1, null, ITEM2 };
+        Smartshelf k = new Smartshelf(items);
+        return k;
+    }
+
+    /**
+     * @return a Smartshelf constructed with ITEM1, null, ITEM2 in the argument
+     *  array
+     */
+    private static Smartshelf makeConstructorNullAndTwoItemSmartshelf() {
+        Item[] items = { null, ITEM2, ITEM1 };
         Smartshelf k = new Smartshelf(items);
         return k;
     }
@@ -353,6 +363,23 @@ public class Coursework1Main {
         shelf = makeConstructorTwoItemAndNullSmartshelf();
         testDoubleEqual("averageWeightInGrammes", 27.5, shelf.averageWeightInGrammes());
 
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testObjectEqual("greatestItem", ITEM1, shelf.greatestItem());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testIntEqual("numberOfItems", 2, shelf.numberOfItems());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testIntEqual("makeNewSmartshelfWith", 2, shelf.makeNewSmartshelfWith(120).numberOfItems());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testIntEqual("makeNewSmartshelfWith", 1, shelf.makeNewSmartshelfWith(21).numberOfItems());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testIntEqual("makeNewSmartshelfWith", 1, shelf.makeNewSmartshelfWith(20).numberOfItems());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testIntEqual("makeNewSmartshelfWith", 0, shelf.makeNewSmartshelfWith(19).numberOfItems());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testIntEqual("totalWeightInGrammes", 55, shelf.totalWeightInGrammes());
+        shelf = makeConstructorNullAndTwoItemSmartshelf();
+        testDoubleEqual("averageWeightInGrammes", 27.5, shelf.averageWeightInGrammes());
+
         shelf = makeConstructorAddTwoItemAndNullSmartshelf();
         testObjectEqual("greatestItem", ITEM1, shelf.greatestItem());
         shelf = makeConstructorAddTwoItemAndNullSmartshelf();
@@ -459,21 +486,29 @@ OK     - Test 50: makeNewSmartshelfWith, expected: 1, actual: 1
 OK     - Test 51: makeNewSmartshelfWith, expected: 0, actual: 0
 OK     - Test 52: totalWeightInGrammes, expected: 55, actual: 55
 OK     - Test 53: averageWeightInGrammes, expected: 27.5, actual: 27.5
-OK     - Test 54: toString, expected: [], actual: []
-OK     - Test 55: greatestItem, expected: null, actual: null
-OK     - Test 56: numberOfItems, expected: 0, actual: 0
-OK     - Test 57: makeNewSmartshelfWith, expected: 0, actual: 0
-OK     - Test 58: totalWeightInGrammes, expected: 0, actual: 0
-OK     - Test 59: averageWeightInGrammes, expected: -1.0, actual: -1.0
-OK     - Test 60: greatestItem, expected: 400, actual: 400
-OK     - Test 61: numberOfItems, expected: 6, actual: 6
-OK     - Test 62: makeNewSmartshelfWith, expected: 3, actual: 3
-OK     - Test 63: totalWeightInGrammes, expected: 1455, actual: 1455
-OK     - Test 64: averageWeightInGrammes, expected: 242.5, actual: 242.5
-OK     - Test 65: heaviestSmartshelf, expected: null, actual: null
-OK     - Test 66: heaviestSmartshelf, expected: 1000, actual: 1000
+OK     - Test 53: greatestItem, expected: (Pen, 35g), actual: (Pen, 35g)
+OK     - Test 55: numberOfItems, expected: 2, actual: 2
+OK     - Test 56: makeNewSmartshelfWith, expected: 2, actual: 2
+OK     - Test 57: makeNewSmartshelfWith, expected: 1, actual: 1
+OK     - Test 58: makeNewSmartshelfWith, expected: 1, actual: 1
+OK     - Test 59: makeNewSmartshelfWith, expected: 0, actual: 0
+OK     - Test 60: totalWeightInGrammes, expected: 55, actual: 55
+OK     - Test 61: averageWeightInGrammes, expected: 27.5, actual: 27.5
+OK     - Test 62: toString, expected: [], actual: []
+OK     - Test 63: greatestItem, expected: null, actual: null
+OK     - Test 64: numberOfItems, expected: 0, actual: 0
+OK     - Test 65: makeNewSmartshelfWith, expected: 0, actual: 0
+OK     - Test 66: totalWeightInGrammes, expected: 0, actual: 0
+OK     - Test 67: averageWeightInGrammes, expected: -1.0, actual: -1.0
+OK     - Test 68: greatestItem, expected: 400, actual: 400
+OK     - Test 69: numberOfItems, expected: 6, actual: 6
+OK     - Test 70: makeNewSmartshelfWith, expected: 3, actual: 3
+OK     - Test 71: totalWeightInGrammes, expected: 1455, actual: 1455
+OK     - Test 72: averageWeightInGrammes, expected: 242.5, actual: 242.5
+OK     - Test 73: heaviestSmartshelf, expected: null, actual: null
+OK     - Test 74: heaviestSmartshelf, expected: 1000, actual: 1000
 
-OK    : 66
+OK    : 74
 FAILED: 0
 
      */
